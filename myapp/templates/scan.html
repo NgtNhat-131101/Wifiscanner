@@ -1,0 +1,43 @@
+<!-- myapp/templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WifiScanner</title>
+</head>
+<body>
+    <h1>WifiScanner</h1>
+    <button onclick="refreshPage()">Scan</button>
+    
+  <script>
+    function refreshPage() {
+      location.reload(); // Reload the current page
+    }
+  </script>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>SSID</th>
+                <th>RSSI (dbm)</th>
+                <th>Frequency</th>
+                <th>BSSID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{result.date}}</td>
+                    <td>{{result.time}}</td>
+                    <td>{{ result.ssid }}</td>
+                    <td>{{ result.rssi }}</td>
+                    <td>{{ result.freq }}</td>
+                    <td>{{ result.bssid }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

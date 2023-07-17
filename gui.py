@@ -19,17 +19,37 @@ class WifiScanner:
 
         self.tree.grid(row=0, column=0, columnspan=2)
 
-        self.start_button = tk.Button(self.window, text="Start", command=self.start_scanning, width=10, height=2)
-        self.start_button.grid(row=1, column=0, padx=5, pady=5)
+        self.start_button = tk.Button(self.window, 
+                                      text="Start", 
+                                      command=self.start_scanning, 
+                                      width=10, height=2)
+        self.start_button.grid(row=1, 
+                               column=0, 
+                               padx=5, pady=5)
 
-        self.stop_button = tk.Button(self.window, text="Stop", command=self.stop_scanning, width=10, height=2)
-        self.stop_button.grid(row=1, column=1, padx=5, pady=5)
+        self.stop_button = tk.Button(self.window, 
+                                     text="Stop", 
+                                     command=self.stop_scanning, 
+                                     width=10, height=2)
+        self.stop_button.grid(row=1, 
+                              column=1, 
+                              padx=5, pady=5)
 
         self.is_scanning = False
 
-    def add_row(self, row_id, name_network, rssi, freq, bssid):
+    def add_row(self, 
+                row_id, 
+                name_network, 
+                rssi, 
+                freq, 
+                bssid):
         # row_id = self.tree.get_children()
-        self.tree.insert("", "end", text=row_id, values=(name_network, rssi, freq, bssid))
+        self.tree.insert("", "end", 
+                         text=row_id, 
+                         values=(name_network, 
+                                 rssi, 
+                                 freq, 
+                                 bssid))
 
     def start_scanning(self):
         if not self.is_scanning:
@@ -60,7 +80,11 @@ class WifiScanner:
             for data in results:
                 if data.ssid == "":
                     continue
-                self.add_row(row_id, data.ssid, data.signal, data.freq, data.bssid)
+                self.add_row(row_id, 
+                             data.ssid, 
+                             data.signal, 
+                             data.freq, 
+                             data.bssid)
                 row_id += 1
                 
             self.window.update()
@@ -68,4 +92,3 @@ class WifiScanner:
     def clear_table(self):
         for row in self.tree.get_children():
             self.tree.delete(row)
-
