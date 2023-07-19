@@ -1,4 +1,4 @@
 comtypes==1.2.0
 Django==4.2.3
-firebase-admin==6.2.0
+firebase-admin==2.0
 pywifi==1.1.12
