@@ -63,12 +63,13 @@ def home(request):
         # with open('results.csv', 'a', newline='') as csvfile:
         #     writer = csv.writer(csvfile)
         #     writer.writerow(result.values())
-    
-    with open('new_information.json', 'w') as jsonfile:
-        json.dump(results, jsonfile, indent=4)
+    ref = db.reference(storage_url)
+    ref.push().set(results)
+    # with open('new_information.json', 'w') as jsonfile:
+    #     json.dump(results, jsonfile, indent=4)
         
-    data = read_json_file("new_information.json")
-    post_data(storage_url, 'new_information.json')
+    # data = read_json_file("new_information.json")
+    # post_data(storage_url, 'new_information.json')
     
     context = {
         'results': results
