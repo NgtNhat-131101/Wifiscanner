@@ -60,9 +60,9 @@ def home(request):
             'bssid': data.bssid
         }
         results.append(result)
-        with open('results.csv', 'a', newline='') as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow(result.values())
+        # with open('results.csv', 'a', newline='') as csvfile:
+        #     writer = csv.writer(csvfile)
+        #     writer.writerow(result.values())
     
     with open('new_information.json', 'w') as jsonfile:
         json.dump(results, jsonfile, indent=4)
